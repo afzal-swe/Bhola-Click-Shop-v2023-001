@@ -59,12 +59,12 @@
          </p>
       </div>
       <!-- jQery -->
-      <script src="{{ asset ('asset/js/jquery-3.4.1.min.js')}}"></script>
+      <script src="{{ asset('asset/js/jquery-3.4.1.min.js') }}"></script>
       <!-- popper js -->
-      <script src="{{ asset ('asset/js/popper.min.js')}}"></script>
+      <script src="{{ asset('asset/js/popper.min.js') }}"></script>
       <!-- bootstrap js -->
-      <script src="{{ asset ('asset/js/bootstrap.js')}}"></script>
+      <script src="{{ asset('asset/js/bootstrap.js') }}"></script>
       <!-- custom js -->
-      <script src="{{ asset ('asset/js/custom.js')}}"></script>
+      <script src="{{ asset('asset/js/custom.js') }}"></script>
    </body>
 </html>
