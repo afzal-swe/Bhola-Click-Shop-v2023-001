@@ -23,15 +23,16 @@
     <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.png') }}" />
   </head>
   <body>
+
     <div class="container-scroller">
       <!-- partial:partials/_sidebar.html -->
       @include('admin.partial.sidebar')
       <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
+      
         <!-- partial:partials/_navbar.html -->
         @include('admin.partial.topbar')
         <!-- partial -->
-        @yield('admin')
+        @yield('admin.partial.body')
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->

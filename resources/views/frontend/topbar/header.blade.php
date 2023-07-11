@@ -37,7 +37,7 @@
                   @auth
                      <li class="nav-item">
                         <li class="nav-item">
-                           <a class="btn btn-primary"  id="login" href="#">Logout</a>
+                           <a class="btn btn-primary"  id="login" href="{{ route('logout') }}">Logout</a>
                         </li>
                      </li>
                   @else
