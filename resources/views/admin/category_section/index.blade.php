@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-10">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Blog Category Section</h4>
+                        <h4 class="mb-sm-0"> Category Section</h4>
                     </div>
                 </div>
             </div>
@@ -22,23 +22,25 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">All Blog Category</h4>
+                            <h4 class="card-title">All Category</h4>
 
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Sl</th>
-                                        <th>Blog Category</th>
+                                        <th>Category Name</th>
+                                        <th>Category Slug</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
 
-                                    {{-- @foreach ($blog_category as $key=>$row) --}}
+                                    @foreach ($category as $key=>$row)
                                     <tr>
-                                        <td>#</td>
-                                        <td>#</td>
+                                        <td>{{ ++$key }}</td>
+                                        <td>{{ $row->category_name }}</td>
+                                        <td>{{ $row->category_slug }}</td>
                                         <td>
                                             {{-- <a href="#" class="btn btn-success sm" title="View Data"><i class="ri-eye-off-fill"></i></a> --}}
                                             <a href="#" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
@@ -46,7 +48,7 @@
                                             
                                         </td>
                                     </tr>
-                                    {{-- @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
