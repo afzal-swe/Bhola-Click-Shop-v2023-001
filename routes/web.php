@@ -44,6 +44,7 @@ Route::get('/category/destroy/{id}', [CategoryController::class, 'destroy'])->na
 Route::get('/all/products', [ProductController::class, 'index'])->name('product.index');
 Route::get('/create/product', [ProductController::class, 'create'])->name('product.create');
 Route::post('/create/store', [ProductController::class, 'store'])->name('product.store');
+Route::get('/create/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 
 
 

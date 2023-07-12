@@ -1,7 +1,7 @@
 @extends('admin.admin_master')
 @section('admin')
 
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <div class="main-content col-lg-10 center">
     <div class="page-content">
@@ -109,18 +109,25 @@
                                       <label for="exampleInputFile">File input</label>
                                       <div class="input-group">
                                         <div class="custom-file">
-                                          <input type="file" class="custom-file-input" id="exampleInputFile" name="image">
+                                          <input type="file" class="custom-file-input" id="image" name="image">
                                           <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
                                         
                                       </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="col-sm-2 col-form-label"> </label>
+                                        <div class="col-sm-10">
+                                            <img id="showImage" class="rounded avatar-lg" src="{{ url('image/No_Image_Available.jpg') }}" alt="Card image cap">
+                                        </div>
                                     </div>
               
                                   
                                 </div>
                                 <!-- /.card-body -->
                 
-                                 <div class="form-group row mt-3 pt-1">
+                                 <div class="form-group row mt-2 pt-1">
                                     <div class="col-12">
                                         <button class="btn btn-primary waves-effect waves-light" type="submit">Add Product</button>
                                     </div>
@@ -136,3 +143,15 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#image').change(function(e){
+            var reader = new FileReader();
+            reader.onload=function(e){
+                $('#showImage').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+</script>
+@endsection
