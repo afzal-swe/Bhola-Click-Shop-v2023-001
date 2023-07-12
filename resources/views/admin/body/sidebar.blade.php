@@ -45,6 +45,8 @@
                         <li><a href="#">Manage Users</a></li>
                     </ul>
                 </li>
+
+                {{-- Category Section --}}
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-account-circle-line"></i>
@@ -56,18 +58,18 @@
                     </ul>
                 </li>
 
+                {{-- Product Section --}}
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-account-circle-line"></i>
+                        <span>Products</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('product.create') }}">Add Product</a></li>
+                        <li><a href="{{ route('product.index') }}">Manage Product</a></li>
+                    </ul>
+                </li>
 
-
-              
-              
-
-           
-
-                
-
-
-
-                
 
              
 

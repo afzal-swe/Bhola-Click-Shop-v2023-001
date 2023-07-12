@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,11 @@ Route::post('/category/store', [CategoryController::class, 'store'])->name('cate
 Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
 Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::get('/category/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+// Product Controller Route Section
+Route::get('/all/products', [ProductController::class, 'index'])->name('product.index');
+Route::get('/create/product', [ProductController::class, 'create'])->name('product.create');
+Route::post('/create/store', [ProductController::class, 'store'])->name('product.store');
 
 
 
