@@ -36,9 +36,18 @@
 
                   @auth
                      <li class="nav-item">
-                        <li class="nav-item">
-                           <a class="btn btn-primary"  id="login" href="{{ route('logout') }}">Logout</a>
-                        </li>
+                        
+                           
+
+                           <a  class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                           
+                           <p style="height: 5px; test-bottom:6px;">Logout</p>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                              @csrf
+                        </form>
+                        
                      </li>
                   @else
                      <li class="nav-item">

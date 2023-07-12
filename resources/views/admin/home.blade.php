@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>Supper Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('backend/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/vendors/css/vendor.bundle.base.css') }}">
@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.png') }}" />
+    
   </head>
   <body>
     <div class="container-scroller">
@@ -31,7 +32,8 @@
         <!-- partial:partials/_navbar.html -->
         @include('admin.partial.topbar')
         <!-- partial -->
-        @yield('admin')
+        {{-- @yield('admin') --}}
+        @include('admin.partial.body')
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->

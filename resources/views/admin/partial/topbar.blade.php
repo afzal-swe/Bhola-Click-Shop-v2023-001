@@ -1,3 +1,4 @@
+
 <nav class="navbar p-0 fixed-top d-flex flex-row">
     <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
       <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset ('backend/assets/images/logo-mini.svg')}}" alt="logo" /></a>
@@ -170,7 +171,8 @@
               </div>
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item">
+            <a class="dropdown-item preview-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
               <div class="preview-thumbnail">
                 <div class="preview-icon bg-dark rounded-circle">
                   <i class="mdi mdi-logout text-danger"></i>
@@ -180,6 +182,9 @@
                 <p class="preview-subject mb-1">Log out</p>
               </div>
             </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+            </form>
             <div class="dropdown-divider"></div>
             <p class="p-3 mb-0 text-center">Advanced settings</p>
           </div>
