@@ -9,19 +9,19 @@
             <div class="row">
                 <div class="card">
                     <div class="card-body"><br><br>
-                        <h4 class="text-muted font-size-18"><b>Create A New Blog Category</b></h4><br><br>
+                        <h4 class="text-muted font-size-18"><b>Create A New Product Category</b></h4><br><br>
     
                         <div class="p-3">
-                            <form method="POST" action="#">
+                            <form method="POST" action="{{ route('category.store') }}">
                                 @csrf
                                 
                                 <!-- Portfolio Name -->
                                 <div class="mb-4 row">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Blog Category<span class="text-danger">*</span></label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Category Name<span class="text-danger">*</span></label>
                                     <div class="col-sm-10">
-                                        <input id="blog_category" name="blog_category" class="form-control" type="text" placeholder="Blog Category Name" value="{{old('blog_category')}}">
+                                        <input id="category_name" name="category_name" class="form-control" type="text" placeholder="Category Name">
                                         
-                                        @error('blog_category')
+                                        @error('category_name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -29,7 +29,7 @@
     
                                 <div class="form-group row mt-3 pt-1">
                                     <div class="col-12">
-                                        <button class="btn btn-primary waves-effect waves-light" type="submit">Create Blog Category</button>
+                                        <button class="btn btn-primary waves-effect waves-light" type="submit">Create Category</button>
                                     </div>
                                 </div>
     
