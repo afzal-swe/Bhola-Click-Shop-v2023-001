@@ -36,4 +36,14 @@ class CategoryController extends Controller
         $notification = array('message' => 'Add Product Category Successfully', 'alert-type' => 'success');
         return redirect()->back()->with($notification);
     }
+
+    // Category Delete Function //
+    public function destroy($id)
+    {
+
+        Category::findOrFail($id)->delete();
+
+        $notification = array('message' => 'Delete Category Successfully', 'alert-type' => 'success');
+        return redirect()->back()->with($notification);
+    }
 }
