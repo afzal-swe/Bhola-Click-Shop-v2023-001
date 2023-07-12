@@ -37,6 +37,25 @@ class CategoryController extends Controller
         return redirect()->back()->with($notification);
     }
 
+    // Category Edit Function //
+    public function edit($id)
+    {
+        $edit = Category::findOrFail($id);
+        return view('admin.category_section.edit', compact('edit'));
+    }
+
+    // Category Update Function //
+    public function update(Request $request)
+    {
+        $update = $request->id;
+        Category::findOrFail($update)->update([
+            'category_name' => $request->category_name,
+            'category_slug' => Str::of($request->category_name)->slug('-'),
+        ]);
+        $notification = array('message' => 'Update Category Successfully', 'alert-type' => 'success');
+        return redirect()->route('category.index')->with($notification);
+    }
+
     // Category Delete Function //
     public function destroy($id)
     {
