@@ -19,8 +19,10 @@ use App\Http\Controllers\Admin\CategoryController;
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/redirect', [HomeController::class, 'redirect']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -31,7 +33,8 @@ Route::middleware('auth')->group(function () {
 
 // Category Controller Route Section
 Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
 
-Route::get('/redirect', [HomeController::class, 'redirect']);
+
 
 require __DIR__ . '/auth.php';

@@ -1,62 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/css/vendor.bundle.base.css') }}">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/jvectormap/jquery-jvectormap.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/owl-carousel-2/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/owl-carousel-2/owl.theme.default.min.css') }}">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
-    <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.png') }}" />
-  </head>
-  <body>
+@extends('admin.admin_master')
+@section('admin')
 
-    <div class="container-scroller">
-      <!-- partial:partials/_sidebar.html -->
-      @include('admin.partial.sidebar')
-      <!-- partial -->
-      
-        <!-- partial:partials/_navbar.html -->
-        @include('admin.partial.topbar')
-        <!-- partial -->
-        @yield('admin.partial.body')
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<div class="main-content col-lg-10">
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-10">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0">Blog Category Section</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h4 class="card-title">All Blog Category</h4>
+
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Sl</th>
+                                        <th>Blog Category</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    {{-- @foreach ($blog_category as $key=>$row) --}}
+                                    <tr>
+                                        <td>#</td>
+                                        <td>#</td>
+                                        <td>
+                                            {{-- <a href="#" class="btn btn-success sm" title="View Data"><i class="ri-eye-off-fill"></i></a> --}}
+                                            <a href="#" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
+                                            <a href="#" id="delete" class="btn btn-danger sm" title="Delete Data"><i class="fas fa-trash-alt"></i></a>
+                                            
+                                        </td>
+                                    </tr>
+                                    {{-- @endforeach --}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+        </div> <!-- container-fluid -->
     </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="{{ asset ('backend/assets/vendors/js/vendor.bundle.base.js')}}"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="{{ asset ('backend/assets/vendors/chart.js/Chart.min.js')}}"></script>
-    <script src="{{ asset ('backend/assets/vendors/progressbar.js/progressbar.min.js')}}"></script>
-    <script src="{{ asset ('backend/assets/vendors/jvectormap/jquery-jvectormap.min.js')}}"></script>
-    <script src="{{ asset ('backend/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
-    <script src="{{ asset ('backend/assets/vendors/owl-carousel-2/owl.carousel.min.js')}}"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="{{ asset ('backend/assets/js/off-canvas.js')}}"></script>
-    <script src="{{ asset ('backend/assets/js/hoverable-collapse.js')}}"></script>
-    <script src="{{ asset ('backend/assets/js/misc.js')}}"></script>
-    <script src="{{ asset ('backend/assets/js/settings.js')}}"></script>
-    <script src="{{ asset ('backend/assets/js/todolist.js')}}"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="{{ asset ('backend/assets/js/dashboard.js')}}"></script>
-    <!-- End custom js for this page -->
-  </body>
-</html>
+</div>
+@endsection
