@@ -43,7 +43,9 @@ Route::get('/category/destroy/{id}', [CategoryController::class, 'destroy'])->na
 // Product Controller Route Section
 Route::get('/all/products', [ProductController::class, 'index'])->name('product.index');
 Route::get('/create/product', [ProductController::class, 'create'])->name('product.create');
-Route::post('/create/store', [ProductController::class, 'store'])->name('product.store');
+Route::post('/store/product', [ProductController::class, 'store'])->name('product.store');
+Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
 Route::get('/create/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 
 
