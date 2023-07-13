@@ -49,5 +49,12 @@ Route::post('/product/update/{id}', [ProductController::class, 'update'])->name(
 Route::get('/create/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 
 
+// Frontend Product Details Route
+Route::get('/product/destdetails/{id}', [HomeController::class, 'details'])->name('product.details');
+
+
+
+
+
 
 require __DIR__ . '/auth.php';

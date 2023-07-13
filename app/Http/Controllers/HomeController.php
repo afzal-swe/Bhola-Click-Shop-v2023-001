@@ -27,4 +27,11 @@ class HomeController extends Controller
         $product = Product::paginate(6);
         return view('frontend.home', compact('product'));
     }
+
+    // Frontend Route Section Product Details//
+    public function details($id)
+    {
+        $product_details = Product::findOrFail($id);
+        return view('frontend.product_section.product_details', compact('product_details'));
+    }
 }
