@@ -46,20 +46,26 @@ class HomeController extends Controller
             $product = Product::find($id);
 
 
-            Cart::insert([
-                'user_name' => $user->name,
-                'user_email' => $user->email,
-                'user_phone' => $user->phone,
-                'user_address' => $user->address,
-                'user_id' => $user->id,
+            $cart = new Cart();
+            $cart->user_name = $user->name;
+            $cart->user_email = $user->email;
+            $cart->user_phone = $user->phone;
+            $cart->user_address = $user->address;
+            $cart->user_id = $user->id;
 
-                'product_title' => $product->title,
-                'price' => $product->price,
-                'quantity' => $product->quantity,
-                'product_id' => $product->id,
-                'image' => $product->image,
-            ]);
+            $cart->product_title = $product->title;
+            $cart->quantity = $product->quantity;
+            $cart->product_id = $product->id;
+            $cart->image = $product->image;
 
+            if ($product->discount_price != null) {
+                $cart->price = $product->discount_price;
+            } else {
+                $cart->price = $product->price;
+            }
+
+
+            $cart->save();
 
             $notification = array('message' => 'Add to Cart Successfully', 'alert-type' => 'success');
             return redirect()->back()->with($notification);

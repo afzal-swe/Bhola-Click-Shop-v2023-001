@@ -21,6 +21,7 @@
       <link href="{{ asset('asset/css/style.css') }}" rel="stylesheet" />
       <!-- responsive style -->
       <link href="{{ asset('asset/css/responsive.css') }}" rel="stylesheet" />
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
    </head>
    <body>
       <div class="hero_area">
@@ -117,7 +118,10 @@
                         </ul><br>
                         <h4>Discription</h4>
                         <p> {!! $product_details->description !!}</p><br><br>
-                        <a href="" class="btn btn-primary">Add to Cart</a><br><hr>
+                        <form action="{{ route('add.cart',$product_details->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="submit" class="option2" value="Add to Cart">
+                         </form><br><hr>
                     </div>
                     
                 </aside>
@@ -186,6 +190,30 @@
       <script src="{{ asset('asset/js/bootstrap.js') }}"></script>
       <!-- custom js -->
       <script src="{{ asset('asset/js/custom.js') }}"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+        <script>
+            @if(Session::has('message'))
+            var type = "{{ Session::get('alert-type','info') }}"
+            switch(type){
+               case 'info':
+               toastr.info(" {{ Session::get('message') }} ");
+               break;
+           
+               case 'success':
+               toastr.success(" {{ Session::get('message') }} ");
+               break;
+           
+               case 'warning':
+               toastr.warning(" {{ Session::get('message') }} ");
+               break;
+           
+               case 'error':
+               toastr.error(" {{ Session::get('message') }} ");
+               break; 
+            }
+            @endif 
+           </script>
    </body>
 </html>
 
