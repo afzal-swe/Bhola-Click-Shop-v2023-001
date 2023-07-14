@@ -53,6 +53,10 @@ Route::get('/create/destroy/{id}', [ProductController::class, 'destroy'])->name(
 Route::get('/product/destdetails/{id}', [HomeController::class, 'details'])->name('product.details');
 // Add to cart Product  Route
 Route::post('/add/cart/{id}', [HomeController::class, 'add_cart'])->name('add.cart');
+// Add to cart View  Route
+Route::get('/cart/view', [HomeController::class, 'cart_view'])->name('cart.view');
+// Add to cart cancel Order  Route
+Route::get('/order/cancel/{id}', [HomeController::class, 'order_cancel'])->name('order.cancel');
 
 
 

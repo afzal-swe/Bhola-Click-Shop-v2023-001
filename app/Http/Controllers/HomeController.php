@@ -73,4 +73,25 @@ class HomeController extends Controller
             return redirect('login');
         }
     }
+
+    // Cart View Route Section //
+    public function cart_view()
+    {
+        if (Auth::id()) {
+            $id = Auth::user()->id;
+            $cart_view = Cart::where('user_id', '=', $id)->get();
+
+            return view('frontend.product_section.add_to_cart.view', compact('cart_view'));
+        } else {
+            return redirect('login');
+        }
+    }
+
+    // Cansel Order Route Section //
+    public function order_cancel($id)
+    {
+        Cart::findOrFail($id)->delete();
+        $notification = array('message' => 'Order Cencel Successfully', 'alert-type' => 'success');
+        return redirect()->back()->with($notification);
+    }
 }
