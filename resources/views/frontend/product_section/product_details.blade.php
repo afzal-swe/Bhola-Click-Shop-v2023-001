@@ -22,6 +22,8 @@
       <!-- responsive style -->
       <link href="{{ asset('asset/css/responsive.css') }}" rel="stylesheet" />
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
+    
+      
    </head>
    <body>
       <div class="hero_area">
@@ -33,16 +35,16 @@
 <main>
 
 <!-- breadcrumb-area -->
-<section class="breadcrumb__wrap">
+<section class="breadcrumb__wrap bg-light">
     <div class="container custom-container">
         <div class="row ">
-            <div class="col-xl-6 col-lg-8 col-md-10">
+            <div class="col-xl-6 col-lg-8 col-md-10 mt-8">
                 <div class="breadcrumb__wrap__content">
-                    <h2 class="title">Product Details</h2>
+                    <h2 class="title mt-3">Product Details</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ $product_details->title}}</li>
+                            
                         </ol>
                     </nav>
                 </div>
@@ -53,59 +55,77 @@
 <!-- breadcrumb-area-end -->
 
 <!-- portfolio-details-area -->
-<section class="services__details">
+<section class="services__details bg-light pd-3">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-6">
                 <div class="services__details__thumb">
                     <img src="{{ asset($product_details->image) }}" alt="">
                 </div>
                 <div class="services__details__content">
-                    <h2 class="title">{{ $product_details->title }}</h2><br>
+                    
                     {{-- <p>Discription : {!! $product_details->description !!}</p> --}}
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <aside class="services__sidebar">
+                    <h2 class="title" style="color: rgb(55, 73, 187);">{{ $product_details->title }}</h2><br>
+                    <button type="button" class="btn btn-outline-secondary mt-2 fs-6">Price : {{$product_details->discount_price}}৳</button>
+                    <button type="button" class="btn btn-outline-secondary mt-2 fs-6">Regular Price : {{$product_details->price}}৳</button>
+                    <button type="button" class="btn btn-outline-secondary mt-2 fs-6">Status : <samp class="text-success">In Stock</samp></button>
+                    <button type="button" class="btn btn-outline-secondary mt-2 fs-6">Product Code : </button>
+                    <button type="button" class="btn btn-outline-secondary mt-2 fs-6">Brand : TP-Link</button><br><br>
+                    <h6>Key Features</h6>
+                    <p> {!! $product_details->description !!}</p><br>
+                    <a href="" class="" style="color: red">View More Info</a><br>
+
+                    <h2>Payment Options</h2><br>
+                    <div class="product-price-options">
+                        <label class="p-wrap cash-payment btn btn-outline-secondary">
+                            <input type="radio" name="enable_emi" checked="" value="0">
+                                <span class="price">3,550৳</span>
+                                <div class="p-tag">Cash Discount Price</div>                               
+                                <div class="p-tag fade">Online / Cash Payment</div>
+                        </label>
+                            <label class="p-wrap btn btn-outline-secondary">
+                            <input type="radio" name="enable_emi" value="1">
+                            <span class="price">325৳/month</span>
+                            <div class="p-tag">Regular Price: 3,900৳</div>
+                            <div class="p-tag fade">0% EMI for up to 12 Months***</div>
+                        </label>
+                    </div>
+                    <br>
+                    <div class="cart-option">
+                        <label class="quantity ">
+                            <span class="ctl"><i class="material-icons">remove</i></span>
+                            <span class="qty"><input type="text" name="quantity" id="input-quantity" value="1" size="2"></span>
+                            <span class="ctl increment"><i class="material-icons">add</i></span>
+                            <input type="hidden" name="product_id" value="23910">
+                        </label>
+                        <form action="{{ route('add.cart',$product_details->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="submit" class="option2" value="Add to Cart">
+                         </form><br>
+                    </div>
                     
-                    <div class="widget">
-                        <h5 class="title">Product Information</h5>
-                        <ul class="sidebar__contact__info">
-                            <li><span>Date :</span> January, 2021</li>
-                            <li><span>Location :</span> East Meadow NY 11554</li>
-                            <li><span>Client :</span> American</li>
-                            <li class="cagegory"><span>Category :</span>
-                                <a href="portfolio.html">Photo,</a>
-                                <a href="portfolio.html">UI/UX</a>
-                            </li>
-                            <li><span>Project Link :</span> <a href="portfolio-details.html">https://www.yournews.com/</a></li>
-                        </ul>
-                    </div>
-                    <div class="widget">
-                        <h5 class="title">Contact Information</h5>
-                        <ul class="sidebar__contact__info">
-                            <li><span>Address :</span> 8638 Amarica Stranfod, <br> Mailbon Star</li>
-                            <li><span>Mail :</span> yourmail@gmail.com</li>
-                            <li><span>Phone :</span> +7464 0187 3535 645</li>
-                            <li><span>Fax id :</span> +9 659459 49594</li>
-                        </ul>
-                        {{-- <ul class="sidebar__contact__social">
-                            <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                        </ul> --}}
-                    </div>
+                    
+
                 </aside>
             </div>
-
+            
+        </div>
+    </div>
+</section>
+<section class="services__details">
+    <div class="container">
+        <div class="row">
+            
+           
             <div class="col-lg-12">
                 <aside class="services__sidebar">
                     
-                    <div class="widget">
-                        <h5 class="title">Product Details</h5>
+                    <div class="widget"><br><br>
+                        <h5 class="title">Specification</h5>
                         <hr>
                         <ul class="sidebar__contact__info">
                             <li><span>Product Name : </span> {{$product_details->title}}</li>
@@ -118,10 +138,7 @@
                         </ul><br>
                         <h4>Discription</h4>
                         <p> {!! $product_details->description !!}</p><br><br>
-                        <form action="{{ route('add.cart',$product_details->id) }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <input type="submit" class="option2" value="Add to Cart">
-                         </form><br><hr>
+                        <hr>
                     </div>
                     
                 </aside>
@@ -214,6 +231,7 @@
             }
             @endif 
            </script>
+            
    </body>
 </html>
 
