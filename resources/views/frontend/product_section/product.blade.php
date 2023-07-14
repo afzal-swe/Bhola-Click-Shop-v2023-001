@@ -14,9 +14,10 @@
                      <a href="{{ route('product.details',$products->id) }}" class="option1">
                      Product Details
                      </a>
-                     <a href="" class="option2">
-                     Buy Now
-                     </a>
+                     <form action="{{ route('add.cart',$products->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="submit" class="option2" value="Add to Cart">
+                     </form>
                   </div>
                </div>
                <div class="img-box">

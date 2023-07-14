@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Cart;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -33,5 +35,36 @@ class HomeController extends Controller
     {
         $product_details = Product::findOrFail($id);
         return view('frontend.product_section.product_details', compact('product_details'));
+    }
+
+    // Add Cart Route Section Product//
+    public function add_cart(Request $request, $id)
+    {
+        if (Auth::id()) {
+
+            $user = Auth::user();
+            $product = Product::find($id);
+
+
+            Cart::insert([
+                'user_name' => $user->name,
+                'user_email' => $user->email,
+                'user_phone' => $user->phone,
+                'user_address' => $user->address,
+                'user_id' => $user->id,
+
+                'product_title' => $product->title,
+                'price' => $product->price,
+                'quantity' => $product->quantity,
+                'product_id' => $product->id,
+                'image' => $product->image,
+            ]);
+
+
+            $notification = array('message' => 'Add to Cart Successfully', 'alert-type' => 'success');
+            return redirect()->back()->with($notification);
+        } else {
+            return redirect('login');
+        }
     }
 }

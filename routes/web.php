@@ -51,6 +51,8 @@ Route::get('/create/destroy/{id}', [ProductController::class, 'destroy'])->name(
 
 // Frontend Product Details Route
 Route::get('/product/destdetails/{id}', [HomeController::class, 'details'])->name('product.details');
+// Add to cart Product  Route
+Route::post('/add/cart/{id}', [HomeController::class, 'add_cart'])->name('add.cart');
 
 
 
