@@ -116,7 +116,8 @@
                             <li><span>Product Status : </span> {{$product_details->status}}</li>
                         </ul><br>
                         <h4>Discription</h4>
-                        <p> {!! $product_details->description !!}</p><br><hr>
+                        <p> {!! $product_details->description !!}</p><br><br>
+                        <a href="" class="btn btn-primary">Add to Cart</a><br><hr>
                     </div>
                     
                 </aside>
