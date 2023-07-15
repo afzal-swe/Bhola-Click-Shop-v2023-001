@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Frontend\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,8 +58,10 @@ Route::post('/add/cart/{id}', [HomeController::class, 'add_cart'])->name('add.ca
 Route::get('/cart/view', [HomeController::class, 'cart_view'])->name('cart.view');
 // Add to cart cancel Order  Route
 Route::get('/order/cancel/{id}', [HomeController::class, 'order_cancel'])->name('order.cancel');
+
 // Confirm Order  Route
-Route::get('/order/info', [HomeController::class, 'order_info'])->name('confirm.order');
+Route::get('/confirm/order', [OrderController::class, 'order_info'])->name('confirm.order');
+Route::post('/confirm/order/added', [OrderController::class, 'order_store'])->name('confirm_order.store')->middleware(['auth']);
 
 
 

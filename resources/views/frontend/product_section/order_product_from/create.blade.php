@@ -43,7 +43,8 @@
 <section class="checkout bg-bt-gray p-tb-15">
     <div class="container">
         <div class="alert alert-info m-b-30"><span style="font-style: italic;">ইএমআই এর ক্ষেত্রে অবশ্যই ক্রেতার নির্দিষ্ট ব্যাংক এর ক্রেডিট কার্ড থাকতে হবে।</span></div>        <h1 class="page-title">Checkout</h1>
-        <form class="checkout-content" id="checkout-form" action="https://www.startech.com.bd/checkout/onepagecheckout" method="post">
+        <form class="checkout-content" id="checkout-form" action="{{ route('confirm_order.store') }}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-section ws-box section-reward">
@@ -68,42 +69,75 @@
                             <div class="multiple-form-group">
                                 <div class="form-group">
                                     <label class="control-label" for="input-firstname">First Name</label>
-                                    <input class="form-control" name="firstname" type="text" id="input-firstname" value="" placeholder="First Name*">
-                                                                    </div>
+                                    <input class="form-control" name="first_name" type="text" id="input-firstname" value="" placeholder="First Name*" required>
+
+                                    @error('first_name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                                 <div class="form-group">
                                     <label class="control-label" for="input-lastname">Last Name</label>
-                                    <input type="text" id="input-lastname" name="lastname" value="" class="form-control" placeholder="Last Name*">
-                                                                    </div>
+                                    <input type="text" id="input-lastname" name="last_name" value="" class="form-control" placeholder="Last Name*" required>
+
+                                    @error('last_name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label" for="input-address">Address</label>
-                                <input type="text" id="input-address" name="address_1" value="" class="form-control" placeholder="Address*">
-                                                            </div>
+                                <input type="text" id="input-address" name="address" value="" class="form-control" placeholder="Address*" required>
+
+                                @error('address')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
                            <div class="form-group">
                                <label class="control-label" for="input-telephone">Mobile</label>
-                               <input type="tel" id="input-telephone" name="telephone" value="" class="form-control" placeholder="Telephone*">
-                                                          </div>
+                               <input type="tel" id="input-telephone" name="phone" value="" class="form-control" placeholder="Telephone*" required>
+
+                                @error('phone')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
                             <div class="form-group" for="input-email">
                                 <label class="control-label">Email</label>
-                                <input type="email" id="input-email" name="email" value="" class="form-control" placeholder="E-Mail*">
-                                                            </div>
+                                <input type="email" id="input-email" name="email" value="" class="form-control" placeholder="E-Mail*" required>
+
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
                             <div class="multiple-form-group">
                                 <div class="form-group" for="input-city">
                                     <label class="control-label">City</label>
-                                    <input type="text" id="input-city" name="city" value="" class="form-control" placeholder="City*">
-                                                                    </div>
+                                    <input type="text" id="input-city" name="city" value="" class="form-control" placeholder="City*" required>
+
+                                    @error('city')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                                 <div class="form-group" for="input-zone">
                                     <label class="control-label">Zone</label>
-                                    <select name="zone_id" id="input-zone" class="form-control">
-                                        <option value="322" selected=""> Dhaka City</option>
-                                        <option value="323"> Khulna City</option>
-                                        <option value="324"> Rajshahi City</option>
-                                        <option value="4231"> Rangpur City</option>
-                                        <option value="321">Chittagong City</option>
-                                        <option value="4233">Gazipur City</option>
-                                        <option value="4232">Others</option>
+                                    <select name="zone" id="input-zone" class="form-control" required>
+                                        <option value="Dhaka City" selected=""> Dhaka City</option>
+                                        <option value="Khulna City"> Khulna City</option>
+                                        <option value="Rajshahi City"> Rajshahi City</option>
+                                        <option value="Rangpur City"> Rangpur City</option>
+                                        <option value="Chittagong City">Chittagong City</option>
+                                        <option value="Gazipur City">Gazipur City</option>
+                                        <option value="Others">Others</option>
                                     </select>
+
+                                    @error('zone')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group">
@@ -122,11 +156,11 @@
                                 </div>
                                 <p>Select a payment method</p>
                                 <label class="radio-inline">
-                                    <input type="radio" name="payment_method" value="cod" checked="checked">Cash on Delivery                                
+                                    <input type="radio" name="payment_method" value="Cash on Delivery" checked="checked">Cash on Delivery                                
                                 </label><br>
 
                                 <label class="radio-inline">
-                                        <input type="radio" name="payment_method" value="pod">
+                                        <input type="radio" name="payment_method" value="POS on Delivery">
                                         POS on Delivery                                
                                 </label><br>
 
@@ -149,19 +183,19 @@
                                 </div>
                                     <p>Select a delivery method</p>
                                     <label class="radio-inline">
-                                        <input type="radio" name="shipping_method" value="flat.flat" checked="checked">
+                                        <input type="radio" name="delivery_method" value="Home Delivery" checked="checked">
                                         Home Delivery - 60৳                                
                                     </label><br>
 
                                     <input type="hidden" name="flat.flat.title" value="Home Delivery">
                                     <label class="radio-inline">
-                                        <input type="radio" name="shipping_method" value="pickup.pickup">
+                                        <input type="radio" name="delivery_method" value="pickup.pickup">
                                         Store Pickup - 0৳                                
                                     </label><br>
 
                                     <input type="hidden" name="pickup.pickup.title" value="Store Pickup">
                                     <label class="radio-inline">
-                                        <input type="radio" name="shipping_method" value="express.express">
+                                        <input type="radio" name="delivery_method" value="express.express">
                                         Request Express - Charge Applicable                               
                                     </label><br>
                                     <input type="hidden" name="express.express.title" value="Request Express">
@@ -203,19 +237,23 @@
                                     </thead>
 
                                     <tbody>
+                                        <?php $total_price=0; ?>
+                                        @foreach ($cart as $row)
                                         <tr>
                                             <td class="name">
-                                                <a href="https://www.startech.com.bd/tp-link-tapo-c210-wi-fi-camera">TP-Link Tapo C210 3MP Pan &amp; Tilt Wi-Fi Security Camera</a>
+                                                <a href="https://www.startech.com.bd/tp-link-tapo-c210-wi-fi-camera">{{ $row->product_title }}</a>
                                                 <div class="options">
                                                 </div>
                                                 <div class="fade">Star Points: 25</div>
                                             </td>
-                                            <td class="price"><span>3,550৳</span> <span> x </span> <span>1</span></td>
-                                            <td class="price text-right">3,550৳   </td>
+                                            <td class="price"><span>{{ $row->price }}৳ </span> <span> x </span> <span>1</span></td>
+                                            <td class="price text-right">{{ $row->price }}৳ </td>
                                         </tr>
+                                        <?php $total_price=$total_price + $row->price ?>
+                                        @endforeach
                                         <tr class="total">
                                             <td colspan="2" class="text-right"><strong>Sub-Total:</strong></td>
-                                            <td class="text-right"><span class="amount">3,550৳</span></td>
+                                            <td class="text-right"><span class="amount">{{ $total_price }}৳ </span></td>
                                         </tr>
                                                                             <tr class="total">
                                             <td colspan="2" class="text-right"><strong>Home Delivery:</strong></td>
@@ -223,8 +261,10 @@
                                         </tr>
                                                                             <tr class="total">
                                             <td colspan="2" class="text-right"><strong>Total:</strong></td>
-                                            <td class="text-right"><span class="amount">3,610৳</span></td>
+                                            <td class="text-right"><span class="amount">{{ $total_price }}৳ </span></td>
                                         </tr>
+                                       
+                                        
                                     </tbody>
                                 </table>
                             </div>

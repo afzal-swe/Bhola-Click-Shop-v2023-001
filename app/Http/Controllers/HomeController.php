@@ -94,10 +94,4 @@ class HomeController extends Controller
         $notification = array('message' => 'Order Cencel Successfully', 'alert-type' => 'success');
         return redirect()->back()->with($notification);
     }
-
-    // Cansel Order Route Section //
-    public function order_info()
-    {
-        return view('frontend.product_section.order_product_from.create');
-    }
 }
