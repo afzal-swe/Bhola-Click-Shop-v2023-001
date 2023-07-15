@@ -90,7 +90,12 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+            
+        </div><br>
+      
+            <a href="{{ route('confirm.order') }}" class="btn btn-info" >Confirm Order</a>
+           
+        
     </div> <!-- end col -->
 </div><br>
 

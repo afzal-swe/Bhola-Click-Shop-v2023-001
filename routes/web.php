@@ -57,6 +57,8 @@ Route::post('/add/cart/{id}', [HomeController::class, 'add_cart'])->name('add.ca
 Route::get('/cart/view', [HomeController::class, 'cart_view'])->name('cart.view');
 // Add to cart cancel Order  Route
 Route::get('/order/cancel/{id}', [HomeController::class, 'order_cancel'])->name('order.cancel');
+// Confirm Order  Route
+Route::get('/order/info', [HomeController::class, 'order_info'])->name('confirm.order');
 
 
 
