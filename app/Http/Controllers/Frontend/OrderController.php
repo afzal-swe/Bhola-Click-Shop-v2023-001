@@ -42,7 +42,7 @@ class OrderController extends Controller
             'city' => 'required',
         ]);
 
-        foreach ($data as $data) {
+        foreach ($data as $row) {
 
 
             $order = new Order();
@@ -56,19 +56,19 @@ class OrderController extends Controller
             $order->zone = $request->zone;
             $order->comment = $request->comment;
 
-            $order->user_id = $data->user_id;
-            $order->product_name = $data->product_title;
-            $order->product_price = $data->price;
-            $order->product_id = $data->product_id;
-            $order->total = $data->price;
-            $order->product_quantity = $data->quantity;
+            $order->user_id = $row->user_id;
+            $order->product_name = $row->product_title;
+            $order->product_price = $row->price;
+            $order->product_id = $row->product_id;
+            $order->total = $row->price;
+            $order->product_quantity = $row->quantity;
 
             $order->delivery_method = $request->delivery_method;
             $order->payment_method = $request->payment_method;
 
             $order->save();
 
-            $cart_id = $data->id;
+            $cart_id = $row->id;
             $cart = Cart::find($cart_id);
             $cart->delete();
 
