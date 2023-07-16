@@ -73,3 +73,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 4. Make route
 5. Make a view for payment
 6. Write code for payment in the controller
+
+## Pay using Card testing code
+
+7. https://www.itsolutionstuff.com/post/laravel-9-stripe-payment-gateway-integration-tutorialexample.html

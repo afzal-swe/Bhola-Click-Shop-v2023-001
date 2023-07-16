@@ -59,9 +59,14 @@ Route::get('/cart/view', [HomeController::class, 'cart_view'])->name('cart.view'
 // Add to cart cancel Order  Route
 Route::get('/order/cancel/{id}', [HomeController::class, 'order_cancel'])->name('order.cancel');
 
-// Confirm Order  Route
+// Cash On Delivery Order  Route
 Route::get('/confirm/order', [OrderController::class, 'order_info'])->name('confirm.order');
 Route::post('/confirm/order/added', [OrderController::class, 'order_store'])->name('confirm_order.store')->middleware(['auth']);
+
+// Pay Using Card  Route
+Route::get('/stripe/{total_price}', [OrderController::class, 'stripe'])->name('strip.order')->middleware(['auth']);
+Route::post('stripe/{total_price}', [OrderController::class, 'stripePost'])->name('stripe.post')->middleware(['auth']);
+
 
 
 

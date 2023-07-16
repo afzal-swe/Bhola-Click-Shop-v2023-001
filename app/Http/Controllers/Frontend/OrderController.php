@@ -8,8 +8,13 @@ use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 
+use Illuminate\Support\Facades\Session;
+use Stripe;
+
 class OrderController extends Controller
 {
+    // Cash On Delivery Function Start //
+
     // Confirm Order From Route Section //
     public function order_info()
     {
@@ -100,4 +105,74 @@ class OrderController extends Controller
             return redirect()->back()->with($notification);
         }
     }
+
+    // Cash On Delivery Function End //
+
+    // Pay Using Card Function Start //
+
+
+    public function stripe($total_price)
+    {
+        return view('frontend.product_section.order_product_from.stripe', compact('total_price'));
+    }
+
+    public function stripePost(Request $request, $total_price)
+    {
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        Stripe\Charge::create([
+            "amount" => $total_price * 100,
+            "currency" => "usd",
+            "source" => $request->stripeToken,
+            "description" => "Thanks for Payment !"
+        ]);
+
+
+
+        $user = Auth::user();
+        $user_id = $user->id;
+
+        $data = Cart::where('user_id', '=', $user_id)->get();
+
+
+
+        foreach ($data as $row) {
+
+
+            $order = new Order();
+
+            $order->first_name = $request->first_name;
+            $order->last_name = $request->last_name;
+            $order->address = $request->address;
+            $order->phone = $request->phone;
+            $order->email = $request->email;
+            $order->city = $request->city;
+            $order->zone = $request->zone;
+            $order->comment = $request->comment;
+
+            $order->user_id = $row->user_id;
+            $order->product_name = $row->product_title;
+            $order->product_price = $row->price;
+            $order->product_id = $row->product_id;
+            $order->total = $row->price;
+            $order->product_quantity = $row->quantity;
+
+            $order->delivery_method = 'Paid';
+            $order->payment_method = $request->payment_method;
+
+            $order->save();
+
+            $cart_id = $row->id;
+            $cart = Cart::find($cart_id);
+            $cart->delete();
+        }
+
+        $notification = array('message' => 'Payment Successfully', 'alert-type' => 'success');
+        return redirect()->back()->with($notification);
+    }
+
+
+
+
+    // Pay Using Card Function End //
 }

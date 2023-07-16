@@ -93,11 +93,12 @@
             
         </div><br>
       
-            <a href="{{ route('confirm.order') }}" class="btn btn-info" >Confirm Order</a>
+            <a href="{{ route('confirm.order') }}" class="btn btn-info" >Cash On Delivery</a>
+            <a href="{{ route('strip.order',$total_price) }}" class="btn btn-info" >Pay Using Card</a>
            
         
     </div> <!-- end col -->
-</div><br>
+</div><br><br>
 
 
 
