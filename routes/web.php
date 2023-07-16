@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CartController;
+
 use App\Http\Controllers\Frontend\OrderController;
 
 /*
@@ -34,23 +36,29 @@ Route::middleware('auth')->group(function () {
 
 
 // Category Controller Route Section
-Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
-Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
-Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
-Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
-Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
-Route::get('/category/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+Route::get('/category', [CategoryController::class, 'index'])->name('category.index')->middleware(['auth']);
+Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create')->middleware(['auth']);
+Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store')->middleware(['auth']);
+Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit')->middleware(['auth']);
+Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update')->middleware(['auth']);
+Route::get('/category/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy')->middleware(['auth']);
 
 // Product Controller Route Section
-Route::get('/all/products', [ProductController::class, 'index'])->name('product.index');
-Route::get('/create/product', [ProductController::class, 'create'])->name('product.create');
-Route::post('/store/product', [ProductController::class, 'store'])->name('product.store');
-Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
-Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
-Route::get('/create/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+Route::get('/all/products', [ProductController::class, 'index'])->name('product.index')->middleware(['auth']);
+Route::get('/create/product', [ProductController::class, 'create'])->name('product.create')->middleware(['auth']);
+Route::post('/store/product', [ProductController::class, 'store'])->name('product.store')->middleware(['auth']);
+Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit')->middleware(['auth']);
+Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('product.update')->middleware(['auth']);
+Route::get('/create/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy')->middleware(['auth']);
+
+// Cart Controller Route Section
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index')->middleware(['auth']);
 
 
-// Frontend Product Details Route
+
+
+
+// Frontend Product Details Route||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 Route::get('/product/destdetails/{id}', [HomeController::class, 'details'])->name('product.details');
 // Add to cart Product  Route
 Route::post('/add/cart/{id}', [HomeController::class, 'add_cart'])->name('add.cart');

@@ -70,6 +70,17 @@
                     </ul>
                 </li>
 
+                {{-- Cart Section --}}
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-account-circle-line"></i>
+                        <span>Add to cart</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('cart.index') }}">Manage Cart</a></li>
+                    </ul>
+                </li>
+
 
              
 
