@@ -81,6 +81,17 @@
                     </ul>
                 </li>
 
+                {{-- Order Section --}}
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-account-circle-line"></i>
+                        <span>Order Section</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('order.index') }}">Manage Order</a></li>
+                    </ul>
+                </li>
+
 
              
 

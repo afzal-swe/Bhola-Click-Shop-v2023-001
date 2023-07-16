@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CartController;
+use App\Http\Controllers\Admin\OrdersController;
 
 use App\Http\Controllers\Frontend\OrderController;
 
@@ -55,6 +56,11 @@ Route::get('/create/destroy/{id}', [ProductController::class, 'destroy'])->name(
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index')->middleware(['auth']);
 Route::get('/cart/view/{id}', [CartController::class, 'view'])->name('cart.show')->middleware(['auth']);
 Route::get('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.destroy')->middleware(['auth']);
+
+// Order Controller Route Section
+Route::get('/order', [OrdersController::class, 'index'])->name('order.index')->middleware(['auth']);
+Route::get('/order/delete/{id}', [OrdersController::class, 'destroy'])->name('order.destroy')->middleware(['auth']);
+
 
 
 
