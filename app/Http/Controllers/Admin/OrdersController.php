@@ -14,6 +14,12 @@ class OrdersController extends Controller
         return view('admin.order_section.index', compact('order_details'));
     }
 
+    public function view($id)
+    {
+        $order_view = Order::findOrFail($id);
+        return view('admin.order_section.view', compact('order_view'));
+    }
+
     public function destroy($id)
     {
         Order::findOrFail($id)->delete();

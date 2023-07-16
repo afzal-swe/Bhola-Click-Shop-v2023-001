@@ -51,7 +51,7 @@
                                         <td class="text-success">Active</td>
                                         
                                         <td>
-                                            <a href="#" class="btn btn-success sm" title="View Data"><i class="ri-eye-off-fill"></i></a>
+                                            <a href="{{ route('order.view',$row->id)}}" class="btn btn-success sm" title="View Data"><i class="ri-eye-off-fill"></i></a>
                                             <a href="{{ route('order.destroy',$row->id) }}" id="delete" class="btn btn-danger sm" title="Delete Data"><i class="fas fa-trash-alt"></i></a>
                                             
                                         </td>
