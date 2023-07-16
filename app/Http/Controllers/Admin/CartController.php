@@ -13,4 +13,10 @@ class CartController extends Controller
         $cart = Cart::all();
         return view('admin.add_to_cart.index', compact('cart'));
     }
+
+    public function view($id)
+    {
+        $view = Cart::findOrFail($id);
+        return view('admin.add_to_cart.view', compact('view'));
+    }
 }

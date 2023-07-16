@@ -53,6 +53,7 @@ Route::get('/create/destroy/{id}', [ProductController::class, 'destroy'])->name(
 
 // Cart Controller Route Section
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index')->middleware(['auth']);
+Route::get('/cart/view/{id}', [CartController::class, 'view'])->name('cart.show')->middleware(['auth']);
 
 
 

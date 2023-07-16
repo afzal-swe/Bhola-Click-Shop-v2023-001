@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-10">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0"> Product Section</h4>
+                        <h4 class="mb-sm-0"> All Add to cart here</h4>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                                         <td>Active</td>
                                         
                                         <td>
-                                            <a href="#" class="btn btn-success sm" title="View Data"><i class="ri-eye-off-fill"></i></a>
+                                            <a href="{{ route('cart.show',$row->id) }}" class="btn btn-success sm" title="View Data"><i class="ri-eye-off-fill"></i></a>
                                             <a href="#" id="delete" class="btn btn-danger sm" title="Delete Data"><i class="fas fa-trash-alt"></i></a>
                                             
                                         </td>
