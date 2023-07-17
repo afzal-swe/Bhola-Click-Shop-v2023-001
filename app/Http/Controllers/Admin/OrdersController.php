@@ -27,4 +27,26 @@ class OrdersController extends Controller
         $notification = array('message' => 'Order Delete Successfully', 'alert-type' => 'success');
         return redirect()->back()->with($notification);
     }
+
+    // Delivery Order Function //
+    public function delivered($id)
+    {
+        $order = Order::find($id);
+
+        if ($order->delivery_status == "Painding") {
+            $order->delivery_status = "Delivered";
+
+            $order->save();
+
+            $notification = array('message' => 'Order Delivery Confirm Successfully', 'alert-type' => 'success');
+            return redirect()->back()->with($notification);
+        } else {
+            $order->delivery_status = "Painding";
+
+            $order->save();
+
+            $notification = array('message' => 'Order Delivery Cancel Successfully', 'alert-type' => 'success');
+            return redirect()->back()->with($notification);
+        }
+    }
 }

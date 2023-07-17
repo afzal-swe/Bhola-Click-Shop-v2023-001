@@ -69,6 +69,7 @@ class OrderController extends Controller
             $order->product_quantity = $row->quantity;
 
             $order->delivery_method = $request->delivery_method;
+            $order->delivery_status = 'Painding';
             $order->payment_method = $request->payment_method;
 
             $order->save();
@@ -157,8 +158,10 @@ class OrderController extends Controller
             $order->total = $row->price;
             $order->product_quantity = $row->quantity;
 
-            $order->delivery_method = 'Paid';
-            $order->payment_method = $request->payment_method;
+            $order->delivery_method = "Pay Using Card";
+            $order->delivery_status = 'Painding';
+            $order->payment_method = "Pay Using Card";
+            $order->payment_status = "Paid";
 
             $order->save();
 

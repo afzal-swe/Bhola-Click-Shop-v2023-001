@@ -24,7 +24,9 @@ return new class extends Migration
             $table->string('user_id')->nullable();
 
             $table->string('payment_method')->nullable();
+            $table->string('payment_status')->nullable();
             $table->string('delivery_method')->nullable();
+            $table->string('delivery_status')->nullable();
             $table->string('product_name')->nullable();
             $table->string('product_price')->nullable();
             $table->string('product_quantity')->nullable();

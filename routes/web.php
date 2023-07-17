@@ -61,6 +61,9 @@ Route::get('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.
 Route::get('/order', [OrdersController::class, 'index'])->name('order.index')->middleware(['auth']);
 Route::get('/order/view/{id}', [OrdersController::class, 'view'])->name('order.view')->middleware(['auth']);
 Route::get('/order/delete/{id}', [OrdersController::class, 'destroy'])->name('order.destroy')->middleware(['auth']);
+// Delivered Order Route Section //
+Route::get('/order/delivery/{id}', [OrdersController::class, 'delivered'])->name('delivered.order')->middleware(['auth']);
+
 
 
 

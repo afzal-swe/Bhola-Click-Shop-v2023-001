@@ -28,12 +28,16 @@
                                 <thead>
                                     <tr>
                                         <th>Sl</th>
-                                        <th>Product ID</th>
+                                        
                                         <th>Product Name</th>
                                         <th>Quantity</th>
                                         <th>Product Price</th>
                                         <th>Total Price</th>
-                                        <th>Status</th>
+                                        <th>Payment Methord</th>
+                                        <th>Delivery Methord</th>
+                                        <th>Payment Status</th>
+                                        <th>Delivery Status</th>
+                                        <th>Deliverd</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -43,12 +47,22 @@
                                     @foreach ($order_details as $key=>$row)
                                     <tr>
                                         <td>{{ ++$key }}</td>
-                                        <td>{{ $row->product_id }}</td>
+                                        
                                         <td>{{ $row->product_name  }}</td>
                                         <td>{{ $row->product_quantity }}</td>
                                         <td>{{ $row->product_price }}</td>
                                         <td>{{ $row->total }}</td>
-                                        <td class="text-success">Active</td>
+                                        <td>{{ $row->payment_method }}</td>
+                                        <td>{{ $row->delivery_method }}</td>
+                                        <td>{{ $row->payment_status }}</td>
+                                        <td>{{ $row->delivery_status }}</td>
+                                        <td>
+                                            @if ($row->delivery_status=='Painding')
+                                            <a href="{{ route('delivered.order',$row->id) }}" onclick="return confirm('Are you sure this Product is delivered !!')" class="btn btn-primary">Delivered</a>
+                                            @else
+                                            <a href="{{ route('delivered.order',$row->id) }}" onclick="return confirm('Are you sure this Product is cancel delivered !!')" class="btn btn-danger">Cancel</a>
+                                            @endif
+                                        </td>
                                         
                                         <td>
                                             <a href="{{ route('order.view',$row->id)}}" class="btn btn-success sm" title="View Data"><i class="ri-eye-off-fill"></i></a>
