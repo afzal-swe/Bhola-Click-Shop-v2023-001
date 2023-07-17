@@ -50,7 +50,9 @@
                             <hr>
                             <h4 class="card-title">Discription : </h4>
                             <hr>
-                            <a href="{{ route('order.index',$order_view->id) }}" class="btn btn-primary btn-rounded waves-effect waves-light">Back to home</a>
+                            <a href="{{ route('order.index',$order_view->id) }}" class="btn btn-primary ">Back to home</a>
+                            <a href="{{ route('invoice.view',$order_view->id) }}" class="btn btn-secondary ">invoice View</a>
+                            <a href="{{ route('invoice.prient',$order_view->id) }}" class="btn btn-secondary ">invoice PDF</a>
                         </div>
                     </div>
                 </div>

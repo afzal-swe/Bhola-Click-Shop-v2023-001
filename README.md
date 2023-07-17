@@ -77,3 +77,17 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## Pay using Card testing code
 
 7. https://www.itsolutionstuff.com/post/laravel-9-stripe-payment-gateway-integration-tutorialexample.html
+
+## Pdf Download In Laravel
+
+1. composer require barryvdh/laravel-dompdf
+2. Got to config/app.php
+   'providers' => [
+   Barryvdh\DomPDF\ServiceProvider::class,
+   ],
+
+'aliases' => [
+'PDF' => Barryvdh\DomPDF\Facade::class,
+]
+
+3. https://github.com/LaravelDaily/laravel-invoices

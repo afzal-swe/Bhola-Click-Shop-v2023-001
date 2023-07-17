@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\OrdersController;
+use App\Http\Controllers\Admin\PdfController;
 
 use App\Http\Controllers\Frontend\OrderController;
 
@@ -63,6 +64,9 @@ Route::get('/order/view/{id}', [OrdersController::class, 'view'])->name('order.v
 Route::get('/order/delete/{id}', [OrdersController::class, 'destroy'])->name('order.destroy')->middleware(['auth']);
 // Delivered Order Route Section //
 Route::get('/order/delivery/{id}', [OrdersController::class, 'delivered'])->name('delivered.order')->middleware(['auth']);
+// Print PDF Order Route Section //
+Route::get('/generate/invoice/{id}', [PdfController::class, 'generate_pdf'])->name('invoice.view')->middleware(['auth']);
+Route::get('/download/invoice/{id}', [PdfController::class, 'download_pdf'])->name('invoice.prient')->middleware(['auth']);
 
 
 
