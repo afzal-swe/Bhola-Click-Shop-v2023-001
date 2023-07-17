@@ -38,35 +38,35 @@ Route::middleware('auth')->group(function () {
 
 
 // Category Controller Route Section
-Route::get('/category', [CategoryController::class, 'index'])->name('category.index')->middleware(['auth']);
-Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create')->middleware(['auth']);
-Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store')->middleware(['auth']);
-Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit')->middleware(['auth']);
-Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update')->middleware(['auth']);
-Route::get('/category/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy')->middleware(['auth']);
+Route::get('/category', [CategoryController::class, 'index'])->name('category.index')->middleware(['auth', 'verified']);
+Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create')->middleware(['auth', 'verified']);
+Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store')->middleware(['auth', 'verified']);
+Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit')->middleware(['auth', 'verified']);
+Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update')->middleware(['auth', 'verified']);
+Route::get('/category/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy')->middleware(['auth', 'verified']);
 
 // Product Controller Route Section
-Route::get('/all/products', [ProductController::class, 'index'])->name('product.index')->middleware(['auth']);
-Route::get('/create/product', [ProductController::class, 'create'])->name('product.create')->middleware(['auth']);
-Route::post('/store/product', [ProductController::class, 'store'])->name('product.store')->middleware(['auth']);
-Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit')->middleware(['auth']);
-Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('product.update')->middleware(['auth']);
-Route::get('/create/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy')->middleware(['auth']);
+Route::get('/all/products', [ProductController::class, 'index'])->name('product.index')->middleware(['auth', 'verified']);
+Route::get('/create/product', [ProductController::class, 'create'])->name('product.create')->middleware(['auth', 'verified']);
+Route::post('/store/product', [ProductController::class, 'store'])->name('product.store')->middleware(['auth', 'verified']);
+Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit')->middleware(['auth', 'verified']);
+Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('product.update')->middleware(['auth', 'verified']);
+Route::get('/create/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy')->middleware(['auth', 'verified']);
 
 // Cart Controller Route Section
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index')->middleware(['auth']);
-Route::get('/cart/view/{id}', [CartController::class, 'view'])->name('cart.show')->middleware(['auth']);
-Route::get('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.destroy')->middleware(['auth']);
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index')->middleware(['auth', 'verified']);
+Route::get('/cart/view/{id}', [CartController::class, 'view'])->name('cart.show')->middleware(['auth', 'verified']);
+Route::get('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.destroy')->middleware(['auth', 'verified']);
 
-// Order Controller Route Section
-Route::get('/order', [OrdersController::class, 'index'])->name('order.index')->middleware(['auth']);
-Route::get('/order/view/{id}', [OrdersController::class, 'view'])->name('order.view')->middleware(['auth']);
-Route::get('/order/delete/{id}', [OrdersController::class, 'destroy'])->name('order.destroy')->middleware(['auth']);
+// Order Controller Route Section, 'verified'
+Route::get('/order', [OrdersController::class, 'index'])->name('order.index')->middleware(['auth', 'verified']);
+Route::get('/order/view/{id}', [OrdersController::class, 'view'])->name('order.view')->middleware(['auth', 'verified']);
+Route::get('/order/delete/{id}', [OrdersController::class, 'destroy'])->name('order.destroy')->middleware(['auth', 'verified']);
 // Delivered Order Route Section //
-Route::get('/order/delivery/{id}', [OrdersController::class, 'delivered'])->name('delivered.order')->middleware(['auth']);
+Route::get('/order/delivery/{id}', [OrdersController::class, 'delivered'])->name('delivered.order')->middleware(['auth', 'verified']);
 // Print PDF Order Route Section //
-Route::get('/generate/invoice/{id}', [PdfController::class, 'generate_pdf'])->name('invoice.view')->middleware(['auth']);
-Route::get('/download/invoice/{id}', [PdfController::class, 'download_pdf'])->name('invoice.prient')->middleware(['auth']);
+Route::get('/generate/invoice/{id}', [PdfController::class, 'generate_pdf'])->name('invoice.view')->middleware(['auth', 'verified']);
+Route::get('/download/invoice/{id}', [PdfController::class, 'download_pdf'])->name('invoice.prient')->middleware(['auth', 'verified']);
 
 
 
