@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\PdfController;
+use App\Http\Controllers\Admin\SendMailController;
+use App\Notifications\SendEmailNotification;
 
 use App\Http\Controllers\Frontend\OrderController;
 
@@ -28,7 +30,7 @@ Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/redirect', [HomeController::class, 'redirect']);
+Route::get('/redirect', [HomeController::class, 'redirect'])->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -67,6 +69,13 @@ Route::get('/order/delivery/{id}', [OrdersController::class, 'delivered'])->name
 // Print PDF Order Route Section //
 Route::get('/generate/invoice/{id}', [PdfController::class, 'generate_pdf'])->name('invoice.view')->middleware(['auth', 'verified']);
 Route::get('/download/invoice/{id}', [PdfController::class, 'download_pdf'])->name('invoice.prient')->middleware(['auth', 'verified']);
+
+// Send Mail Route Section //
+Route::get('/send/mail/{id}', [SendMailController::class, 'send_mail'])->name('send.email')->middleware(['auth', 'verified']);
+
+// Send Mail Route Section //
+Route::post('/send/user/mail/{id}', [SendMailController::class, 'send_user_mail'])->name('send_user.email')->middleware(['auth', 'verified']);
+
 
 
 

@@ -209,6 +209,7 @@
                                 </body>
                                 </html>
                             <a href="{{ route('order.index',$order_view->id) }}" class="btn btn-primary ">Back to home</a>
+                            <a href="{{ route('send.email',$order_view->id) }}" class="btn btn-info ">Send Email</a>
                             <a href="{{ route('invoice.view',$order_view->id) }}" class="btn btn-secondary ">invoice View</a>
                             <a href="{{ route('invoice.prient',$order_view->id) }}" class="btn btn-secondary ">invoice PDF</a>
                         </div>
