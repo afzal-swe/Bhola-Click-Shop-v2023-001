@@ -12,9 +12,9 @@ class PdfController extends Controller
 {
     public function generate_pdf($id)
     {
-        $order = Order::findOrFail($id);
+        $order_view = Order::findOrFail($id);
         $data = 'webjourney.dev';
-        $pdf = Pdf::loadView('admin.pdf_section.pdf', compact('data', 'order'));
+        $pdf = Pdf::loadView('admin.pdf_section.pdf', compact('data', 'order_view'));
         return $pdf->stream('billing-invoice');
     }
 
