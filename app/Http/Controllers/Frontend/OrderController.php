@@ -178,4 +178,27 @@ class OrderController extends Controller
 
 
     // Pay Using Card Function End //
+
+    // View Order for user //
+    public function order_view()
+    {
+        $order_view = Order::all();
+
+        if (Auth::id()) {
+            return view('frontend.order.index', compact('order_view'));
+        } else {
+            return redirect('login');
+        }
+    }
+    // View Order for user //
+    public function view_order($id)
+    {
+        $order_view = Order::find($id);
+
+        if (Auth::id()) {
+            return view('frontend.order.view', compact('order_view'));
+        } else {
+            return redirect('login');
+        }
+    }
 }

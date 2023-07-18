@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\SendMailController;
 use App\Notifications\SendEmailNotification;
 
 use App\Http\Controllers\Frontend\OrderController;
+use App\Http\Controllers\Frontend\invoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +100,15 @@ Route::post('/confirm/order/added', [OrderController::class, 'order_store'])->na
 // Pay Using Card  Route
 Route::get('/stripe/{total_price}', [OrderController::class, 'stripe'])->name('strip.order')->middleware(['auth']);
 Route::post('stripe/{total_price}', [OrderController::class, 'stripePost'])->name('stripe.post')->middleware(['auth']);
+
+// Order View for user Route
+Route::get('/order/view', [OrderController::class, 'order_view'])->name('order_view')->middleware(['auth']);
+Route::get('/view/order/{id}', [OrderController::class, 'view_order'])->name('view.order')->middleware(['auth']);
+
+// invoice for user Route
+Route::get('/invoice/view{id}', [invoiceController::class, 'generate_pdf'])->name('inovice_view.order')->middleware(['auth']);
+Route::get('/invoice/print/{id}', [invoiceController::class, 'download_pdf'])->name('invoice_prine.order')->middleware(['auth']);
+
 
 
 

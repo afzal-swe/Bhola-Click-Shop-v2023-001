@@ -22,6 +22,7 @@
       <!-- responsive style -->
       <link href="{{ asset('asset/css/responsive.css') }}" rel="stylesheet" />
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
+  
     
       
    </head>
@@ -39,7 +40,7 @@
         <div class="card">
             <div class="card-body">
 
-                <h4 class="card-title">Add to cart</h4>
+                <h4 class="card-title">All Order Product : {{Auth::user()->name}}</h4>
 
                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
@@ -47,46 +48,35 @@
                             <th>Sl</th>
                             <th>Image</th>
                             <th>Product Name</th>
-                            <th>Model</th>
                             <th>Quantity</th>
-                            <th>Unit Price</th>
-                            <th>Total</th>
+                            <th>Price</th>
+                            <th>Payment Status</th>
+                            <th>Delivery Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <?php $total_price=0; ?>
-                        @foreach ($cart_view as $key=>$row)
+                        @foreach ($order_view as $key=>$row)
                        
                         <tr>
                            
                            <td>{{ ++$key }}</td>
                            <td><img src="{{ asset($row->image) }}" style="width: 40px; height:40px"></td>
-                           <td>{{ $row->product_title }}</td>
-                           <td>{{ $row->product_id }}</td>
-                           <td>{{ $row->quantity }}</td>
-                           <td>{{ $row->price }}</td>
-                           <td>{{ $row->price }}</td>
+                           <td>{{ $row->product_name }}</td>
+                           <td>{{ $row->product_quantity }}</td>
+                           <td>{{ $row->product_price }}</td>
+                           <td>{{ $row->payment_status }}</td>
+                           <td>{{ $row->delivery_status }}</td>
+
                            <td>
-                            
-                            
-                            <a href="{{route('order.cancel',$row->id)}}" id="delete" class="btn btn-danger sm" title="Delete Data">Remove</a>
-                            
-                        </td>
+                                <a href="{{ route('view.order',$row->id) }}" class="btn btn-success sm" title="View Data">View</a>
+                                <a href="#" id="delete" class="btn btn-danger sm" title="Delete Data">Delete</i></a>
+                            </td>
                         </tr>
                        <?php $total_price=$total_price + $row->price ?>
                         @endforeach
-                        <tr>
-                               
-                            <td colspan="8" style="text-align: right;">Sub-Total : {{$total_price}}৳</td>
-                            
-                        </tr>
-                        <tr>
-                            
-                            <td colspan="8" style="text-align: right;">Total : {{$total_price}}৳</td>
-                            
-                        </tr>
                     </tbody>
                 </table>
             </div>
