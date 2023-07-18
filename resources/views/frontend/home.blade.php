@@ -69,6 +69,8 @@
       <script src="{{ asset('asset/js/bootstrap.js') }}"></script>
       <!-- custom js -->
       <script src="{{ asset('asset/js/custom.js') }}"></script>
+      <!-- Sweet alert init js-->
+      <script src="{{ asset('asset/js/sweet-alerts.init.js') }}"></script>
 
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
@@ -106,5 +108,9 @@
                 localStorage.setItem('scrollpos', window.scrollY);
             };
         </script>
+        {{-- Sweet Alert --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="{{ asset('asset/js/code.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js" ></script>
    </body>
 </html>
