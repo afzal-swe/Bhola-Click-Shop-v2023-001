@@ -72,7 +72,7 @@
 
                            <td>
                                 <a href="{{ route('view.order',$row->id) }}" class="btn btn-success sm" title="View Data">View</a>
-                                <a href="#" id="delete" class="btn btn-danger sm" title="Delete Data">Delete</i></a>
+                                <a href="{{ route('orders.destroy',$row->id) }}" id="delete" class="btn btn-danger sm" title="Delete Data">Delete</i></a>
                             </td>
                         </tr>
                        <?php $total_price=$total_price + $row->price ?>

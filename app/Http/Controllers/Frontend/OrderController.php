@@ -71,6 +71,7 @@ class OrderController extends Controller
             $order->delivery_method = $request->delivery_method;
             $order->delivery_status = 'Painding';
             $order->payment_method = $request->payment_method;
+            $order->payment_status = 'Not Paid';
 
             $order->save();
 
@@ -182,9 +183,15 @@ class OrderController extends Controller
     // View Order for user //
     public function order_view()
     {
-        $order_view = Order::all();
+
 
         if (Auth::id()) {
+
+            $user = Auth::user();
+            $userid = $user->id;
+
+            $order_view = Order::where('user_id', '=', $userid)->get();
+
             return view('frontend.order.index', compact('order_view'));
         } else {
             return redirect('login');
@@ -200,5 +207,14 @@ class OrderController extends Controller
         } else {
             return redirect('login');
         }
+    }
+
+    public function destroy($id)
+    {
+
+        Order::findOrFail($id)->delete();
+
+        $notification = array('message' => 'Order Delete Successfully', 'alert-type' => 'success');
+        return redirect()->back()->with($notification);
     }
 }

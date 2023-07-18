@@ -103,6 +103,7 @@ Route::post('stripe/{total_price}', [OrderController::class, 'stripePost'])->nam
 
 // Order View for user Route
 Route::get('/order/view', [OrderController::class, 'order_view'])->name('order_view')->middleware(['auth']);
+Route::get('/orders/destroy/{id}', [OrderController::class, 'destroy'])->name('orders.destroy')->middleware(['auth']);
 Route::get('/view/order/{id}', [OrderController::class, 'view_order'])->name('view.order')->middleware(['auth']);
 
 // invoice for user Route
