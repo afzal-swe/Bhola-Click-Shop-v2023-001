@@ -110,6 +110,10 @@ Route::get('/view/order/{id}', [OrderController::class, 'view_order'])->name('vi
 Route::get('/invoice/view{id}', [invoiceController::class, 'generate_pdf'])->name('inovice_view.order')->middleware(['auth']);
 Route::get('/invoice/print/{id}', [invoiceController::class, 'download_pdf'])->name('invoice_prine.order')->middleware(['auth']);
 
+// Search Product for user Route
+Route::get('/search', [HomeController::class, 'search'])->name('search.product');
+
+
 
 
 

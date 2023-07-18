@@ -3,7 +3,15 @@
        <div class="heading_container heading_center">
           <h2>
              Our <span>products</span>
-          </h2>
+          </h2><br>
+
+          <div>
+            <form action="{{ route('search.product') }}" method="GET">
+               @csrf
+               <input type="text" name="search" placeholder="Search" style="width: 500px; height:40px;">
+               <input type="submit" value="search" style="height:40px;">
+            </form>
+          </div>
        </div>
        <div class="row">
           @foreach ($product as $products)

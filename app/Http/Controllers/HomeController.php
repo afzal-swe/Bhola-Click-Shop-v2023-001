@@ -94,4 +94,14 @@ class HomeController extends Controller
         $notification = array('message' => 'Order Cencel Successfully', 'alert-type' => 'success');
         return redirect()->back()->with($notification);
     }
+
+    // Search Product Route Section //
+    public function search(Request $request)
+    {
+        $search_product = $request->search;
+
+        $product = Product::where('title', 'LIKE', "%$search_product%")->orWhere('category_id', 'LIKE', "%$search_product%")->paginate(10);
+
+        return view('frontend.home', compact('product'));
+    }
 }
