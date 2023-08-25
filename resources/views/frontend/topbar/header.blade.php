@@ -6,11 +6,11 @@
           <span class=""> </span>
           </button>
 
-          @php
+          {{-- @php
              $id = Auth::user()->id;
             $cart_view = DB::table('carts')->where('user_id', '=', $id)->get();
             $order = DB::table('orders')->where('user_id', '=', $id)->get();
-          @endphp
+          @endphp --}}
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
              <ul class="navbar-nav">
@@ -34,10 +34,12 @@
                    <a class="nav-link" href="contact.html">Contact</a>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="{{ route('cart.view') }}">Cart [{{count($cart_view)}}]</a>
+                   <a class="nav-link" href="{{ route('cart.view') }}">Cart</a>
+                   {{-- <a class="nav-link" href="{{ route('cart.view') }}">Cart [{{count($cart_view)}}]</a> --}}
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="{{ route('order_view') }}">Order [{{count($order)}}]</a>
+                   <a class="nav-link" href="{{ route('order_view') }}">Order</a>
+                   {{-- <a class="nav-link" href="{{ route('order_view') }}">Order [{{count($order)}}]</a> --}}
                 </li>
                 <form class="form-inline">
                   <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
